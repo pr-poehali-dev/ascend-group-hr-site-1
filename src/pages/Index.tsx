@@ -83,20 +83,25 @@ const Index = () => {
               <span className="text-2xl font-bold text-primary">Ascend Group</span>
             </div>
             <div className="hidden md:flex items-center gap-6">
-              {["Главная", "Услуги", "О компании", "Вакансии", "Клиентам", "Отзывы", "Контакты"].map((item) => {
-                const id = item === "Главная" ? "home" : item.toLowerCase();
-                return (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(id)}
-                    className={`text-sm font-medium transition-colors hover:text-accent ${
-                      activeSection === id ? "text-accent" : "text-muted-foreground"
-                    }`}
-                  >
-                    {item}
-                  </button>
-                );
-              })}
+              {[
+                { label: "Главная", id: "home" },
+                { label: "Услуги", id: "services" },
+                { label: "О компании", id: "about" },
+                { label: "Вакансии", id: "vacancies" },
+                { label: "Клиентам", id: "clients" },
+                { label: "Отзывы", id: "reviews" },
+                { label: "Контакты", id: "contacts" }
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-sm font-medium transition-colors hover:text-accent ${
+                    activeSection === item.id ? "text-accent" : "text-muted-foreground"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
             <Button size="sm" className="hidden md:flex">Связаться</Button>
           </div>
@@ -114,11 +119,11 @@ const Index = () => {
               Профессиональный подбор персонала и HR-консалтинг для компаний, которые стремятся к развитию
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base" onClick={() => scrollToSection("услуги")}>
+              <Button size="lg" className="text-base" onClick={() => scrollToSection("services")}>
                 Наши услуги
                 <Icon name="ArrowRight" className="ml-2" size={20} />
               </Button>
-              <Button size="lg" variant="outline" className="text-base" onClick={() => scrollToSection("контакты")}>
+              <Button size="lg" variant="outline" className="text-base" onClick={() => scrollToSection("contacts")}>
                 Получить консультацию
               </Button>
             </div>
@@ -156,7 +161,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="услуги" className="py-20 px-4 bg-secondary/30">
+      <section id="services" className="py-20 px-4 bg-secondary/30">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20">Что мы предлагаем</Badge>
@@ -181,7 +186,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="о компании" className="py-20 px-4">
+      <section id="about" className="py-20 px-4">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
             <div>
@@ -245,7 +250,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="вакансии" className="py-20 px-4 bg-secondary/30">
+      <section id="vacancies" className="py-20 px-4 bg-secondary/30">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20">Актуальные предложения</Badge>
@@ -280,7 +285,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="клиентам" className="py-20 px-4">
+      <section id="clients" className="py-20 px-4">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
@@ -315,7 +320,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="отзывы" className="py-20 px-4 bg-secondary/30">
+      <section id="reviews" className="py-20 px-4 bg-secondary/30">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20">Что говорят клиенты</Badge>
@@ -347,7 +352,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="контакты" className="py-20 px-4">
+      <section id="contacts" className="py-20 px-4">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20">Свяжитесь с нами</Badge>
